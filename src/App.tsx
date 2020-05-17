@@ -5,8 +5,8 @@ import SignIn from './pages/SignIn';
 
 const App: React.FC = () => (
   <>
-  <SignIn/>
-  <ClobalStyle/>
+    <SignIn />
+    <ClobalStyle />
   </>
 );
 

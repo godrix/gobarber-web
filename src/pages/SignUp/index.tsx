@@ -1,4 +1,5 @@
 import React, { useCallback, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { FiMail, FiLock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
@@ -10,7 +11,7 @@ import Input from '../../components/input';
 import Button from '../../components/Button';
 
 import logo from '../../assets/logo.svg';
-import { Container, Content, Backgroung } from './styles';
+import { Container, Content, AnimationContainer, Backgroung } from './styles';
 
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
@@ -39,25 +40,27 @@ const SignUp: React.FC = () => {
     <Container>
       <Backgroung />
       <Content>
-        <img src={logo} alt="GoBarber" />
+        <AnimationContainer>
+          <img src={logo} alt="GoBarber" />
 
-        <Form onSubmit={handleSumit} ref={formRef}>
-          <h1>Faça seu cadastro</h1>
-          <Input name="name" icon={FiUser} type="text" placeholder="Name" />
-          <Input name="email" icon={FiMail} type="text" placeholder="Email" />
-          <Input
-            name="password"
-            icon={FiLock}
-            type="password"
-            placeholder="Senha"
-          />
-          <Button type="submit">Entrar</Button>
+          <Form onSubmit={handleSumit} ref={formRef}>
+            <h1>Faça seu cadastro</h1>
+            <Input name="name" icon={FiUser} type="text" placeholder="Name" />
+            <Input name="email" icon={FiMail} type="text" placeholder="Email" />
+            <Input
+              name="password"
+              icon={FiLock}
+              type="password"
+              placeholder="Senha"
+            />
+            <Button type="submit">Entrar</Button>
 
-          <a href="account">
-            <FiArrowLeft />
-            Voltar para Logon
-          </a>
-        </Form>
+            <Link to="/">
+              <FiArrowLeft />
+              Voltar para Logon
+            </Link>
+          </Form>
+        </AnimationContainer>
       </Content>
     </Container>
   );

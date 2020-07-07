@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import { FormHandles } from '@unform/core';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
@@ -22,6 +22,7 @@ interface SigInFormData {
 }
 
 const SignIn: React.FC = () => {
+  const history = useHistory();
   const { sigIn } = useAuth();
   const { addToast } = useToast();
   const formRef = useRef<FormHandles>(null);
@@ -42,6 +43,8 @@ const SignIn: React.FC = () => {
           email: data.email,
           password: data.password,
         });
+
+        history.push('/dashboard');
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const err = getValidationErrors(error);
